@@ -1,43 +1,17 @@
-# Webinar map react
-
-This project is used during the map react webinar.
-The project is built progressively with commit referencing each step.
-
-A preview of the project is available [here](https://stackblitz.com/github/kedevked/webinar-map-react)
-
-## Dependencies
-
-- [google-maps-react](https://github.com/fullstackreact/google-maps-react)
-for Google Map API
-
-## API 
-
-The project uses [Google Map](https://developers.google.com/maps/documentation/) 
-especially the Maps API
+# Neighboord Map
+This is the last project in Google scholarship Udacity Nanodegree in Front End Development track
 
 ## Description
+* The main technology which this project made by is React
 
-This app displays a google Map with 5 markers. A clik on each marker displays
-infos associated to that marker. A filter also allows the user to 
-display specific markers
 
-## Launch the project
 
-- clone the project
+## To Use it in your PC ( For Developers ) 
+* Clone the repo
+* run command `npm install` in your terminal at the project directory 
+* then after installation all packages , write this command to run the project on the local server`npm start` 
 
-git clone `https://github.com/kedevked/webinar-map-react.git`
+## Create React App
 
-- change the working directory 
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
-`cd webinar-map-react`
-
-### Development mode
-
-Serve the project
- 
- `npm start` or `yarn start`
-
-## Contribution
-
-This project is done as part of the react webinar for the map app. 
-So feel free to clone it and use it as the starter of your own project.
