@@ -10,8 +10,11 @@ body {
 }
 .header {
   width: 100%;
-  background-color:#745e33 ;
-    height: 100px;
+  background: rgb(116,94,51);
+  background: -moz-linear-gradient(-45deg, rgba(116,94,51,1) 0%, rgba(31,24,14,1) 100%);
+  background: -webkit-linear-gradient(-45deg, rgba(116,94,51,1) 0%,rgba(31,24,14,1) 100%);
+  background: linear-gradient(135deg, rgba(116,94,51,1) 0%,rgba(31,24,14,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#745e33', endColorstr='#1f180e',GradientType=1 );    height: 100px;
   position: fixed;
   top: 0;
   right: 0;
@@ -68,7 +71,7 @@ transform: translate(0px, 0);
 	transition: -webkit-transform 0.3s ease;
 	transition: transform 0.3s ease;
 	transition: transform 0.3s ease, -webkit-transform 0.3s ease;
-  background-color: #836b47c4;
+  background-color: #1f180ec4;
   height: 100vh;
   width: 300px;
   z-index: 35;

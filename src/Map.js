@@ -364,12 +364,12 @@ export default class MapWrapper extends Component {
       <div>
         <div className="container">
           <div className="menu-side">
-            <input role="search" type='text'placeholder='search for place'
+            <input role="search" type='text'placeholder='search for place' aria-label="search for places"
                    value={this.state.value}
                    onChange={this.handleValueChange}/>
-            <ul className="locations-list">{
+            <ul className="locations-list" role="locations-list">{
               markers.filter(m => m.getVisible()).map((m, i) =>
-                (<li className='menuItem' key={i}>{m.title}</li>))
+                (<li tabIndex="0" className='menuItem' key={i}>{m.title}</li>))
             }</ul>
           </div>
           <div role="application" className="map" ref="map">
@@ -378,7 +378,7 @@ export default class MapWrapper extends Component {
         </div>
         <div className="footer">
         All rights are reserved to husien Adel - project use - 
-        <a href='https://developers.google.com/maps/'>google map API</a>
+        <a rel="noopener noreferrer" href='https://developers.google.com/maps/'>google map API</a>
    
         </div>
       </div>
