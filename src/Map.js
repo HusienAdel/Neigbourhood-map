@@ -226,8 +226,7 @@ export default class MapWrapper extends Component {
       {name: "Topaz restaurant", location: {lat: 25.353672, lng: 49.595706}},
       {name: "Al Othaim Mall", location: {lat: 25.400506, lng: 49.577937}},
       {name: "Al Ahsa Mall", location: {lat: 25.328897, lng: 49.549602}},
-      {name: "King Abdullah Park", location: {lat: 25.320119, lng: 49.556643}},
-
+      {name: "King Abdullah Park", location: {lat: 25.320119, lng: 49.556643}}
          ],
     query: '',
     markers: [],
