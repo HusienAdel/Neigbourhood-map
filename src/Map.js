@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 
 // custom styles for maps 
@@ -318,7 +318,7 @@ export default class MapWrapper extends Component {
       // change marker icon color of clicked marker
       marker.setIcon(highlightedIcon)
       infowindow.marker = marker
-      infowindow.setContent(`<h3>${marker.title}</h3><h4>user likes it</h4>`)
+      infowindow.setContent(`<h3>${marker.title}</h3><h4>my favourite place in hofuf</h4>`)
       infowindow.open(this.map, marker)
       // Make sure the marker property is cleared if the infowindow is closed.
       infowindow.addListener('closeclick', function () {

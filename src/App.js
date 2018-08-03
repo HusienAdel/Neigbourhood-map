@@ -9,7 +9,7 @@ class Mapapp extends Component {
    render() {
     return (
       <div className='header'>
-                <h1 className="heading"> Hofuf Places - KSA </h1>
+                <h1 className="heading"> my Fav Hofuf Places - KSA </h1>
         <MapWrapper google={this.props.google} />
       </div>
     );
