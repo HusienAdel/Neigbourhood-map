@@ -35,7 +35,7 @@ export default class MapWrapper extends Component {
     fetchImges(location.id)
         // .then(resp => this.mounntImage(resp))
         .then(resp => {
-          console.log(this.MakinginfoWindow)
+          // console.log(this.MakinginfoWindow)
           this.MakinginfoWindow(marker, infowindow,resp.src)
         })
         
@@ -79,27 +79,6 @@ export default class MapWrapper extends Component {
   }
 
 
-
-
-
-  // onclickLocation = () => {
-  //   const that = this
-  //   const {infowindow} = this.state
-
-  //   const displayInfowindow = (e) => {
-  //     const {markers} = this.state
-  //     const markerInd =null;
-  //       markers.findIndex(m => m.title.toLowerCase() === e.target.innerText.toLowerCase())
-  //     that.MakinginfoWindow(markers[markerInd], infowindow)
-  //   }
-    
-  //   document.querySelector('.locations-list').addEventListener('click', function (e) {
-  //     if (e.target && e.target.nodeName === "BUTTON") {
-  //       displayInfowindow(e)
-  //     }
-  //   })
-  // }
-
   triggerInfoWindow = (e,marker) =>{
     const activeLocaiton = this.state.locations.filter(location =>{
       return location.name === marker.title;
@@ -130,8 +109,6 @@ export default class MapWrapper extends Component {
      const activeLocaiton = self.state.locations.filter(location =>{
         return location.name === this.title;
       });
-      // console.log(activeLocaiton)
-    console.log(infowindow)
       self.fetchImg(marker,infowindow,activeLocaiton[0])
       })
       this.setState((state) => ({
@@ -159,7 +136,7 @@ export default class MapWrapper extends Component {
       infowindow.marker = marker
       infowindow.setContent(`<h3>${marker.title}</h3><h4>
       </h4>
-      <img src="${src}"/>`)
+      <img alt="${marker.title} photo" class="markerImg" src="${src}"/>`)
       infowindow.open(this.map, marker)
       // Make sure the marker property is cleared if the infowindow is closed.
       infowindow.addListener('closeclick', function () {
@@ -209,8 +186,8 @@ export default class MapWrapper extends Component {
             <input role="search" type='text'placeholder='search for place' aria-label="search for places"
                    value={this.state.value}
                    onChange={this.handleValueChange}/>
-                   <nav>
-            <ul className="locations-list" role="locations-list">{
+                   <nav aria-label='locations list'>
+            <ul className="locations-list" aria-label="locations">{
               markers.filter(m => m.getVisible()).map((m, i) =>
                 (<li tabIndex="0" className='menuItem' key={i}><button onClick={(e)=>{this.triggerInfoWindow(e,m)}} aria-label={m.title}>{m.title}</button></li>))
             }</ul>
@@ -220,11 +197,12 @@ export default class MapWrapper extends Component {
             loading content of page ...
           </div>
         </div>
-        <div className="footer">
+        <footer className="footer">
         All rights are reserved to husien Adel - project use - 
-        <a rel="noopener noreferrer" href='https://developers.google.com/maps/'>google map API</a>
+        <a rel="noopener noreferrer" href='https://developers.google.com/maps/'>google map API</a>- <a rel="noopener noreferrer" href="https://foursquare.com/developers/explore">foursquare-api</a>
+        </footer>
    
-        </div>
+       
       </div>
     )
   }

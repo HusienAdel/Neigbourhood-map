@@ -1,7 +1,6 @@
-// Foursquare API Information
-const client_id = "BRSXR25JKG35EBO33M2LQANSVA155DJG4PZM4YC2QPZPDFQC";
-const client_secret = "KFHEE1Z1VBEXDTF5CTHUTHSGO0NKY5AGIFRWEXVCHT0ZXVAL";
-
+// my apisINFo foursequare
+const client_id = "XY0WOAIRR1A3MX1CAPGVHK4VUCBUMBAYJPHZA2L4EURMIHTI";
+const client_secret = "KLKQIDSEEKOG30VGYKDI1MEE12FAZLPPA3OBMMWTNOC4TF3W";
 const v = '20180804';
 
 export const fetchImges = (venuesID) => {
@@ -16,7 +15,7 @@ export const fetchImges = (venuesID) => {
             if (data) {
                 const {prefix, height, width, suffix, user, source} = data.response.photos.items[0];
                 resolve({
-                  src: `${prefix}${height}x${width}${suffix}`,
+                    src: `${prefix}${height}x${width}${suffix}`,
                     user,
                     source
                 })
