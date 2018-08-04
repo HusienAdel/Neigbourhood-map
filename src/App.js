@@ -17,5 +17,5 @@ class Mapapp extends Component {
 }
 // my google API KEY
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyBEE0tp__NcK5KBP9aP3r-ZhGeU2M_Lu-M'
+  apiKey: 'AIzaSyCXbw5wy_UfZMPbf7iKGZO7q0ktmdgLkXw'
 })(Mapapp)

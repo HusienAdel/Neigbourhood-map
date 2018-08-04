@@ -1,246 +1,57 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
+import * as FoursquareAPI from './FoursquareAPI';
+import styles from './Styles';
+import fetchImges from '../src/FoursquareAPI.js'
 
-// custom styles for maps 
-var styles=[
-  {
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#ebe3cd"
-      }
-    ]
-  },
-  {
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#523735"
-      }
-    ]
-  },
-  {
-    "elementType": "labels.text.stroke",
-    "stylers": [
-      {
-        "color": "#f5f1e6"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#c9b2a6"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative.land_parcel",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#dcd2be"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative.land_parcel",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#ae9e90"
-      }
-    ]
-  },
-  {
-    "featureType": "landscape.natural",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#dfd2ae"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#dfd2ae"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#93817c"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.park",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#a5b076"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.park",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#447530"
-      }
-    ]
-  },
-  {
-    "featureType": "road",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#f5f1e6"
-      }
-    ]
-  },
-  {
-    "featureType": "road.arterial",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#fdfcf8"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#f8c967"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#e9bc62"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway.controlled_access",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#e98d58"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway.controlled_access",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#db8555"
-      }
-    ]
-  },
-  {
-    "featureType": "road.local",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#806b63"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.line",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#dfd2ae"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.line",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#8f7d77"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.line",
-    "elementType": "labels.text.stroke",
-    "stylers": [
-      {
-        "color": "#ebe3cd"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.station",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#dfd2ae"
-      }
-    ]
-  },
-  {
-    "featureType": "water",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#b9d3c2"
-      }
-    ]
-  },
-  {
-    "featureType": "water",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#92998d"
-      }
-    ]
-  }
-];
 export default class MapWrapper extends Component {
 
   //state ,Location array 
   state = {
     locations: [
-      {name: "Marroush Restaurant", location: {lat: 25.337269, lng: 49.593224}},
-      {name: "Topaz restaurant", location: {lat: 25.353672, lng: 49.595706}},
-      {name: "Al Othaim Mall", location: {lat: 25.400506, lng: 49.577937}},
-      {name: "Al Ahsa Mall", location: {lat: 25.328897, lng: 49.549602}},
-      {name: "King Abdullah Park", location: {lat: 25.320119, lng: 49.556643}}
+      {name: "Marroush Restaurant", location: {lat: 25.337269, lng: 49.593224}, id:"537d032a498e10c89475df42" },
+      {name: "Topaz restaurant", location: {lat: 25.353672, lng: 49.595706}, id:"4f9313f0e4b0c03d2a3a75a2"},
+      {name: "Al Othaim Mall", location: {lat: 25.400506, lng: 49.577937}, id:"4f9313f0e4b0c03d2a3a75a2"},
+      {name: "Al Ahsa Mall", location: {lat: 25.328897, lng: 49.549602}, id:"4f9313f0e4b0c03d2a3a75a2"},
+      {name: "King Abdullah Park", location: {lat: 25.320119, lng: 49.556643}, id:"4e6146f8aeb736031469ef4a"}
          ],
+
+
+
+
     query: '',
     markers: [],
     infowindow: new this.props.google.maps.InfoWindow(),
-    highlightedIcon: null
+    highlightedIcon: null,
+
+ 
+    
+
   }
 
+  fetchImg = (marker,infowindow,location) => {
+    
+
+    fetchImges(location.id)
+        // .then(resp => this.mounntImage(resp))
+        .then(resp => {
+          console.log(this.MakinginfoWindow)
+          this.MakinginfoWindow(marker, infowindow,resp.src)
+        })
+        
+  }
   
+  mounntImage = (imageData) => {
+  this.setState({imgData: imageData})
+  }
 
   componentDidMount() {
     this.loadMap()
-    this.onclickLocation()
     // Createhighlighted location
     this.setState({highlightedIcon: this.changeMarkerIcon('dba63d')})
+  
+
+
   }
 
   loadMap() {
@@ -259,23 +70,41 @@ export default class MapWrapper extends Component {
       this.addMarkers()
     }
 
+ // error handling
+ window.gm_authFailure = () => {
+     alert('google maps failedto load')
+};
+
+
   }
 
-  onclickLocation = () => {
-    const that = this
-    const {infowindow} = this.state
 
-    const displayInfowindow = (e) => {
-      const {markers} = this.state
-      const markerInd =
-        markers.findIndex(m => m.title.toLowerCase() === e.target.innerText.toLowerCase())
-      that.MakinginfoWindow(markers[markerInd], infowindow)
-    }
-    document.querySelector('.locations-list').addEventListener('click', function (e) {
-      if (e.target && e.target.nodeName === "LI") {
-        displayInfowindow(e)
-      }
-    })
+
+
+
+  // onclickLocation = () => {
+  //   const that = this
+  //   const {infowindow} = this.state
+
+  //   const displayInfowindow = (e) => {
+  //     const {markers} = this.state
+  //     const markerInd =null;
+  //       markers.findIndex(m => m.title.toLowerCase() === e.target.innerText.toLowerCase())
+  //     that.MakinginfoWindow(markers[markerInd], infowindow)
+  //   }
+    
+  //   document.querySelector('.locations-list').addEventListener('click', function (e) {
+  //     if (e.target && e.target.nodeName === "BUTTON") {
+  //       displayInfowindow(e)
+  //     }
+  //   })
+  // }
+
+  triggerInfoWindow = (e,marker) =>{
+    const activeLocaiton = this.state.locations.filter(location =>{
+      return location.name === marker.title;
+    });
+ this.fetchImg(marker,this.state.infowindow,activeLocaiton[0]);
   }
 
   handleValueChange = (e) => {
@@ -283,6 +112,7 @@ export default class MapWrapper extends Component {
   }
 
   addMarkers = () => {
+    const self =this;
     const {google} = this.props
     let {infowindow} = this.state
     const bounds = new google.maps.LatLngBounds()
@@ -293,9 +123,16 @@ export default class MapWrapper extends Component {
         map: this.map,
         title: location.name
       })
-
-      marker.addListener('click', () => {
-        this.MakinginfoWindow(marker, infowindow)
+     
+      marker.addListener('click',function () {
+      
+   
+     const activeLocaiton = self.state.locations.filter(location =>{
+        return location.name === this.title;
+      });
+      // console.log(activeLocaiton)
+    console.log(infowindow)
+      self.fetchImg(marker,infowindow,activeLocaiton[0])
       })
       this.setState((state) => ({
         markers: [...state.markers, marker]
@@ -305,9 +142,9 @@ export default class MapWrapper extends Component {
     this.map.fitBounds(bounds)
   }
 
-  MakinginfoWindow = (marker, infowindow) => {
-    const defaultIcon = marker.getIcon()
-    const {highlightedIcon, markers} = this.state
+  MakinginfoWindow = (marker, infowindow,src) => {
+    const defaultIcon = marker ? marker.getIcon() : null;
+    const {highlightedIcon, markers } = this.state
     // Check to make sure the infowindow is not already opened on this marker.
     if (infowindow.marker !== marker) {
       // reset the color of previous marker
@@ -315,10 +152,14 @@ export default class MapWrapper extends Component {
         const ind = markers.findIndex(m => m.title === infowindow.marker.title)
         markers[ind].setIcon(defaultIcon)
       }
+
+ 
       // change marker icon color of clicked marker
       marker.setIcon(highlightedIcon)
       infowindow.marker = marker
-      infowindow.setContent(`<h3>${marker.title}</h3><h4>my favourite place in hofuf</h4>`)
+      infowindow.setContent(`<h3>${marker.title}</h3><h4>
+      </h4>
+      <img src="${src}"/>`)
       infowindow.open(this.map, marker)
       // Make sure the marker property is cleared if the infowindow is closed.
       infowindow.addListener('closeclick', function () {
@@ -326,6 +167,7 @@ export default class MapWrapper extends Component {
       })
     }
   }
+
 
   changeMarkerIcon = (colorOfMarker) => {
     const {google} = this.props
@@ -367,10 +209,12 @@ export default class MapWrapper extends Component {
             <input role="search" type='text'placeholder='search for place' aria-label="search for places"
                    value={this.state.value}
                    onChange={this.handleValueChange}/>
+                   <nav>
             <ul className="locations-list" role="locations-list">{
               markers.filter(m => m.getVisible()).map((m, i) =>
-                (<li tabIndex="0" className='menuItem' key={i}>{m.title}</li>))
+                (<li tabIndex="0" className='menuItem' key={i}><button onClick={(e)=>{this.triggerInfoWindow(e,m)}} aria-label={m.title}>{m.title}</button></li>))
             }</ul>
+            </nav>
           </div>
           <div role="application" className="map" ref="map">
             loading content of page ...
